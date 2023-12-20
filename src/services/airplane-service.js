@@ -2,11 +2,12 @@
 
 const { AirplaneRepository } = require('../repositories');
 
-const airplaneReosiotry = new AirplaneRepository();
+const airplaneReposiotry = new AirplaneRepository();
+
 
 async function createAirplane(data){
     try {
-        const airplane = await airplaneReosiotry.create(data);
+        const airplane = await airplaneReposiotry.create(data);
         return airplane; 
     } catch (error) {
         throw error;
