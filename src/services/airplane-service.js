@@ -19,10 +19,20 @@ async function createAirplane(data){
             });
             throw new AppError(explanation,StatusCodes.BAD_REQUEST)
         }
-        throw error;
+        throw new AppError("Cannot create a new Airplane object",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+async function getAirplanes(){
+    try {
+        const airplanes = await airplaneReposiotry.getAll();
+        return airplanes;
+    } catch (error) {
+        throw new AppError("Cannot Fetch the data of all the airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
 module.exports = {
-    createAirplane
+    createAirplane,
+    getAirplanes
 }
