@@ -53,9 +53,19 @@ async function destroyAirplane(id){
     }
 }
 
+async function updateAirplane(id,data){
+    try {
+        const response = await airplaneReposiotry.update(data,id);
+        return response;
+    } catch (error) {
+        throw new AppError("Cannot Fetch the data of all the airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 module.exports = {
     createAirplane,
     getAirplanes,
     getAirplane,
-    destroyAirplane
+    destroyAirplane,
+    updateAirplane
 }
