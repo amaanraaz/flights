@@ -1,6 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 const { CityRepository } = require('../repositories');
 const AppError = require('../utils/error/app-error');
+const { destroyAirplane } = require('./airplane-service');
 
 const cityRepository = new CityRepository();
 
@@ -20,6 +21,26 @@ async function createCity(data){
     }
 }
 
+async function getCities(){
+    try {
+        const cities = await cityRepository.getAll();
+        return cities;
+    } catch (error) {
+        throw new AppError("Cannot Fetch the data of all the airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+async function destroyCity(id){
+    try {
+        const response = await cityRepository.delete(id);
+        return response;
+    } catch (error) {
+        throw new AppError("Cannot Fetch the data of the city",StatusCodes.INTERNAL_SERVER_ERROR);    
+    }
+}
+
 module.exports = {
-    createCity
+    createCity,
+    getCities,
+    destroyCity
 }
