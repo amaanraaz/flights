@@ -53,9 +53,9 @@ async function destroyAirplane(id){
     }
 }
 
-async function updateAirplane(id,data){
+async function updateAirplane(data,id){
     try {
-        const response = await airplaneReposiotry.update(data,id);
+        const response = await airplaneReposiotry.update(id,data);
         return response;
     } catch (error) {
         throw new AppError("Cannot Fetch the data of all the airplanes",StatusCodes.INTERNAL_SERVER_ERROR);

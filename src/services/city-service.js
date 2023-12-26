@@ -39,8 +39,18 @@ async function destroyCity(id){
     }
 }
 
+async function updateCity(data,id){
+    try {
+        const response = await cityRepository.update(id,data);
+        return response;
+    } catch (error) {
+        throw new AppError("Cannot Fetch the data of all the airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 module.exports = {
     createCity,
     getCities,
-    destroyCity
+    destroyCity,
+    updateCity
 }
