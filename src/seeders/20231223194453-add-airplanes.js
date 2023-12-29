@@ -26,6 +26,18 @@ module.exports = {
         capacity: 230,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        modelNumber: 'boeing798',
+        capacity: 130,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        modelNumber: 'airbusa68',
+        capacity: 230,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ]);
 
