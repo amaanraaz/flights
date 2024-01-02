@@ -8,7 +8,18 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use('/api',apiRoutes);
 
-app.listen(ServerConfig.PORT,() => {
+app.listen(ServerConfig.PORT,async() => {
     console.log("Server is up and running");
     // Logger.info("started") will generate log file by winston
+    
+    // test 
+//     const {Airport,City} = require('./models');
+//    const city = await City.findByPk(1);
+// //    const res = await city.createAirport({name:'kp m airport',code:'KPM'})
+// await City.destroy({
+//     where:{
+//         id: 1
+//     }
+// })
+
 })
