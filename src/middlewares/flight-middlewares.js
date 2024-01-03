@@ -1,5 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const { ErrorResponse } = require('../utils/common');
+const { compareTime } = require('../utils/helpers/time-compare')
 const AppError = require('../utils/error/app-error');
 
 function validateCreateRequest(req,res,next){
@@ -55,6 +56,13 @@ function validateCreateRequest(req,res,next){
     if(!req.body.totalSeats){
         ErrorResponse.message = 'something went wrong while creating flights';
         ErrorResponse.error = new AppError(['totalSeats not found incoming request'],StatusCodes.BAD_REQUEST);
+        return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json(ErrorResponse)
+    }
+    if(!compareTime(req.body.arrivalTime,req.body.departureTime)){
+        ErrorResponse.message = 'something went wrong while creating flights';
+        ErrorResponse.error = new AppError(['Arrival time can not be greater than departure time as found incoming request'],StatusCodes.BAD_REQUEST);
         return res
         .status(StatusCodes.BAD_REQUEST)
         .json(ErrorResponse)
