@@ -8,4 +8,9 @@ router.post('/',
 FlightMiddlewares.validateCreateRequest,
 FlightController.createFlight)
 
+// /api/v1/flights?trips=mum-del -> GET request
+router.get('/',
+FlightController.getAllFlights)
+
+
 module.exports = router;

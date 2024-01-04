@@ -60,7 +60,7 @@ function validateCreateRequest(req,res,next){
         .status(StatusCodes.BAD_REQUEST)
         .json(ErrorResponse)
     }
-    if(!compareTime(req.body.arrivalTime,req.body.departureTime)){
+    if(!compareTime(req.body.departureTime,req.body.arrivalTime)){
         ErrorResponse.message = 'something went wrong while creating flights';
         ErrorResponse.error = new AppError(['Arrival time can not be greater than departure time as found incoming request'],StatusCodes.BAD_REQUEST);
         return res
