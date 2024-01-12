@@ -70,4 +70,18 @@ function validateCreateRequest(req,res,next){
     next();
 }
 
-module.exports = {validateCreateRequest};
+function validateUpdateSeatsRequest(req,res,next){
+    if(!req.body.seats){
+        ErrorResponse.message = 'something went wrong while booking flight';
+        ErrorResponse.error = new AppError(['seats info not found incoming request'],StatusCodes.BAD_REQUEST);
+        return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json(ErrorResponse)
+    }
+    next();
+}
+
+module.exports = {
+    validateCreateRequest,
+    validateUpdateSeatsRequest
+};
